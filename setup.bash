@@ -25,9 +25,11 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 
 for rcfile in $(ls ${ZDOTDIR:-$HOME}/.zprezto/runcoms/* | xargs -n 1 basename | grep -v README); do
     target="${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/${rcfile}" "${target}"
+    ln -sf "${ZDOTDIR:-$HOME}/.zprezto/runcoms/${rcfile}" "${target}"
 done
 
 cp zpreztorc "${HOME}"/.zpreztorc
 cp tmux.conf "${HOME}"/.tmux.conf
 cp p10k.zsh "${HOME}"/.p10k.zsh
+
+echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> "${HOME}"/.zshrc
