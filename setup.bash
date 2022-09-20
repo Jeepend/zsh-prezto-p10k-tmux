@@ -21,7 +21,8 @@ else
 fi
 
 chsh -s /bin/zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+rm -rf "${HOME}"/.zprezto
+tar -zxf prezto.tgz -C "${HOME}"
 
 for rcfile in $(ls ${ZDOTDIR:-$HOME}/.zprezto/runcoms/* | xargs -n 1 basename | grep -v README); do
     target="${ZDOTDIR:-$HOME}/.${rcfile:t}"
